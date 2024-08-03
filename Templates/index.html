@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+             font-family: Arial, sans-serif;
+             background-image: url('/static/background.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .generated {
+            text-align: center;
+            margin-top: 20px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            margin: 0rem 10rem;
+            font-family: "Poppins", sans-serif;
+        }
+        .title{
+            padding: 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            color: rgb(255, 255, 255);
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        form input {
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            width: 50%;
+            background: black;
+            color: white;
+            border: none;
+            box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.7);
+        }
+        form button{
+            font-size: 1rem;
+            background: rgb(41, 64, 121);
+            border: none;
+            color: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
+        }
+        .generated {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title"></h1>
+    <form action="" method="post">
+        <label for="link"></label>
+        <input type="text" id="link" name="link" required>
+        <button type="submit">Generate QR Code</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="generated">
+                <img src="{{ messages[0] }}" alt="">
+                <p>{{ messages[1] }}</p>
+            </div>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
